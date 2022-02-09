@@ -1,18 +1,26 @@
 <!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
 <idea-plugin>
     <id>com.github.soarex16.intellijideainspectiondemo</id>
-    <name>intellij-idea-inspection-demo</name>
+    <name>Inspection Demo</name>
     <vendor>soarex16</vendor>
 
     <depends>com.intellij.modules.platform</depends>
+    <depends>org.jetbrains.kotlin</depends>
 
     <extensions defaultExtensionNs="com.intellij">
-        <applicationService serviceImplementation="com.github.soarex16.intellijideainspectiondemo.services.MyApplicationService"/>
-        <projectService serviceImplementation="com.github.soarex16.intellijideainspectiondemo.services.MyProjectService"/>
+        <localInspection
+                language="kotlin"
+                displayName="Demo inspection"
+                groupName="Demo inspection for internship program"
+                enabledByDefault="true"
+                level="WARNING"
+                implementationClass="com.github.soarex16.intellijideainspectiondemo.inspections.DemoKotlinInspection"
+        />
     </extensions>
 
     <applicationListeners>
-        <listener class="com.github.soarex16.intellijideainspectiondemo.listeners.MyProjectManagerListener"
-                  topic="com.intellij.openapi.project.ProjectManagerListener"/>
     </applicationListeners>
+
+    <actions>
+    </actions>
 </idea-plugin>
